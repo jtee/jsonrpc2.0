@@ -31,6 +31,9 @@ class JsonRpcServer
 		end
 	end
 
+
+	private
+
 	def handle_request(inRequest)
 		raise InvalidRequest if (inRequest.class != Hash)
 		raise InvalidRequest if (inRequest['jsonrpc'] != VERSION)

@@ -10,7 +10,7 @@ class JsonRpcClient
 		if (inMethod.to_s[(0..1)] == 'r_')
 			fire_request(inMethod.to_s[(2..-1)].to_sym, *inParams)
 		else
-			raise(NameError, inMethod.to_s, caller)
+			super(inMethod, *inParams)
 		end
 	end
 
@@ -31,6 +31,9 @@ class JsonRpcClient
 		send_notification create_message(inMethod, *inParams).to_json
 		nil
 	end
+
+	
+	private
 
 	def create_message(inMethod, *inParams)
 		message = {}
